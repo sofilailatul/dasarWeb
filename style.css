@@ -20,7 +20,7 @@ hw{
 }
 
 body{
-    background: url('img/tree1.jpg'), url('field1.jpg');
+    background: url('img/tree1.jpg'), url('img/field1.jpg');
     background-repeat: no-repeat,repeat;
     color: white
 }
