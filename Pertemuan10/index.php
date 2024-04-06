@@ -2,10 +2,10 @@
 <html>
     <head>
         <title>Data Anggota</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container mt-4">
             <h2>Data Anggota</h2>
             <a href="create.php" class="btn btn-success mt-2">Tambah Data</a>
             <br><br>
