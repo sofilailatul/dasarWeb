@@ -66,7 +66,7 @@
 // }
 
 if(isset($_POST["submit"])){
-    $targetDirectory = "uploads/";
+    $targetDirectory = "D:/laragon/www/dasarWeb/Pertemuan8/Documents/";
     $targetFile = $targetDirectory . basename($_FILES["fileToUpload"]["name"]);
     $documentFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 

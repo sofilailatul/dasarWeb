@@ -1,6 +1,6 @@
 <?php
 // lokasi penyimpanan file yang diunggah
-$targetDirectory = "documents/";
+$targetDirectory = "D:\laragon\www\dasarWeb\Pertemuan8\Documents";
 
 // periksa apakah direktori penyimpanan ada, jika tidak maka buat
 if(!file_exists($targetDirectory)){
