@@ -1,67 +1,63 @@
 <?php
-require_once "database.php";
-class Crud
-{
-    private $db;
-
-    public function __construct()
+    // Menyediakan operasi CRUD untuk entitas 'jabatan' dalam database menggunakan objek Database untuk koneksi
+    require_once 'database.php';
+    class Crud
     {
-        $this->db = new Database();
-    }
+        private $db;
+        public function __construct()
+        {
+            $this->db = new Database();
+        }
 
-    // Create
-    public function create($jabatan, $keterangan)
-    {
-        $query = "INSERT INTO jabatan (jabatan, keterangan) VALUES ('$jabatan', '$keterangan')";
-        $result = $this->db->conn->query($query);
+        // Create
+        public function create($jabatan, $keterangan)
+        {
+            $query = "INSERT INTO jabatan (jabatan, keterangan) VALUES ('$jabatan', '$keterangan')";
+            $result = $this->db->conn->query($query);
+            return $result;
+        }
 
-        return $result;
-    }
+        // Read
+        public function read()
+        {
+            $query = "SELECT * FROM jabatan";
+            $result = $this->db->conn->query($query);
 
-    // Read
-    public function read(): array
-    {
-        $query = "SELECT * FROM jabatan";
-        $result = $this->db->conn->query($query);
+            $data = [];
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                }
+            }
+            return $data;
+        }
 
-        $data = [];
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $data[] = $row;
+        // Read By Id
+        public function readById($id)
+        {
+            $query = "SELECT * FROM jabatan WHERE id = $id";
+            $result = $this->db->conn->query($query);
+            if ($result->num_rows == 1) {
+                return $result->fetch_assoc();
+            } else {
+                return null;
             }
         }
 
-        return $data;
-    }
+        // Update
+        public function update($id, $jabatan, $keterangan)
+        {
+            $query = "UPDATE jabatan SET jabatan = '$jabatan', keterangan = '$keterangan' WHERE id = $id";
+            $result = $this->db->conn->query($query);
 
-    // Read By Id
-    public function readById($id): ?array
-    {
-        $query = "SELECT * FROM jabatan WHERE id = $id";
-        $result = $this->db->conn->query($query);
+            return $result;
+        }
 
-        if ($result->num_rows == 1) {
-            return $result->fetch_assoc();
-        } else {
-            return null;
+        // Delete
+        public function delete($id)
+        {
+            $query = "DELETE FROM jabatan WHERE id = $id";
+            $result = $this->db->conn->query($query);
         }
     }
-
-    // Update
-    public function update($id, $jabatan, $keterangan)
-    {
-        $query = "UPDATE jabatan SET jabatan = '$jabatan', keterangan = '$keterangan' WHERE id = $id";
-        $result = $this->db->conn->query($query);
-
-        return $result;
-    }
-
-    // Delete
-    public function delete($id)
-    {
-        $query = "DELETE FROM jabatan WHERE id = $id";
-        $result = $this->db->conn->query($query);
-
-        return $result;
-    }
-}
+?>

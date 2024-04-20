@@ -1,9 +1,9 @@
 <?php
 class Database
 {
-    private $host = "127.0.0.1:3308";
+    private $host = "localhost";
     private $username = "root";
-    private $password = "123";
+    private $password = "";
     private $database = "prakwebdb";
     public $conn;
 
